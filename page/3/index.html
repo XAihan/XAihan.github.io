@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>砚知</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="砚知">
+<meta property="og:url" content="https://xaihan.github.io/page/3/">
+<meta property="og:site_name" content="砚知">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="XConb">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="砚知" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">砚知</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">水墨画出的程序员</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xaihan.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-post-basics/Js基础引导（二）——语法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/07/10/post-basics/Js%E5%9F%BA%E7%A1%80%E5%BC%95%E5%AF%BC%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E8%AF%AD%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2019-07-10T02:13:48.000Z" itemprop="datePublished">2019-07-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/07/10/post-basics/Js%E5%9F%BA%E7%A1%80%E5%BC%95%E5%AF%BC%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E8%AF%AD%E6%B3%95/">Js基础引导（二）——语法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>朋友，你好。<br><strong>欢迎进入JS基础引导——语法篇，本篇内容是JS的基本概念（常识）</strong></p>
+<h1 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h1><p>JS语法大量借鉴了其他C语言或者类C语言（如java），因此，熟悉这些语言对于学习JS会很轻松，同样的，会了JS学其他语音也会轻松许多。</p>
+<ol>
+<li><p><strong>区分大小写：</strong><br>    JS里面是区分大小写的，也就是说，变量<strong>test</strong>和变量<strong>Test</strong>分别<strong>表示不同的变量</strong>。</p>
+</li>
+<li><p><strong>标识符</strong><br>     标识符：就是变量，函数，属性的名字，或者函数的参数，说白了，就<strong>是你定义的变量名</strong>	<br>    标识符命名也是有规则的，大体如下：<br><br>1.第一个字符必须是一个字母，下划线（_），或者一个美元符号（$）；<br>2.其他字符可以是字母，下划线，美元符号或者数字。<br>以上两点知道就好，对于程序员来说，一般采用驼峰命名法来命名。</p>
+<pre><code>驼峰命名法：骆驼式命名法就是当变量名或函数名是由一个或多个单词连结在一起，而构成的唯一识别字时，第一个单词以小写字母开始；从第二个单词开始以后的每个单词的首字母都采用大写字母，例如：myFirstName、myLastName，这样的变量名看上去就像骆驼峰一样此起彼伏，故得名。
+</code></pre>
+</li>
+<li><p><strong>注释</strong><br> 单行注释<br><br> &#x2F;&#x2F;单行注释<br> 多行注释</p>
+<pre><code>/*
+* 多行注释
+*/
+ 
+</code></pre>
+</li>
+<li><p><strong>严格模式</strong><br> 这是一个很可怕的模式，表示这代码必须完全按照要求书写，对于新手来说，你就当他不存在就行。</p>
+</li>
+<li><p><strong>语句</strong><br>以分号结尾，最好严格按照规格来写，虽然现在编译器很智能，有些问题会自动帮你修改。<br>比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = a + b   </span><br><span class="line"><span class="keyword">var</span> num = a + b;</span><br></pre></td></tr></table></figure>
+<p>这两个都会编译成功，因为编译器自动帮你把第一个的；给不全了，但是编译器不是万能的，有时候编译器理解的和你理解的不一样，会导致编译出错。<br>而且，程序员经常会有压缩代码的需求：</p>
+<p>为了更快的运行速度，在写完代码之后会进行”压缩“。<br>压缩：将写好的代码中的空格，换行等删掉，使得原来百行的代码变的只有一行。</p>
+</li>
+<li><p><strong>关键字和保留字</strong><br><strong>关键字：</strong> 有一些单词是有特殊用途，比如，定义类型，控制语句，等。这就是关键字。<br><strong>保留字：</strong> 还有一些单词，尽管现在没有用处，但是将来可能有用处。这就是保留字。<br>具体关键字和保留字有哪些，自己百度就好。</p>
+</li>
+</ol>
+<p><strong>这篇是讲的基本概念，如果你真的要走上编程这条路，请好好看一下，因为这篇内容，适用于所有的编程语音，而非单JS这一项。</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44220680/article/details/95303083">Js基础引导（一）——（前言以及js简介）</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44220680/article/details/95306622">Js基础引导（二）——语法</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44220680/article/details/95312163">Js基础引导（三）——变量和数据类型</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44220680/article/details/95984735">Js基础引导（四）——操作符</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44220680/article/details/96016550">Js基础引导（五）——语句</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44220680/article/details/96430593">Js基础引导（六）——函数</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xaihan.github.io/2019/07/10/post-basics/Js%E5%9F%BA%E7%A1%80%E5%BC%95%E5%AF%BC%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E8%AF%AD%E6%B3%95/" data-id="cl6ouidod000m1kjqb4r52qtl" data-title="Js基础引导（二）——语法" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E5%BC%95%E5%AF%BC/" rel="tag">基础引导</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-post-basics/Js基础引导（一）——（前言以及js简介）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/07/10/post-basics/Js%E5%9F%BA%E7%A1%80%E5%BC%95%E5%AF%BC%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%EF%BC%88%E5%89%8D%E8%A8%80%E4%BB%A5%E5%8F%8Ajs%E7%AE%80%E4%BB%8B%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2019-07-10T01:24:48.000Z" itemprop="datePublished">2019-07-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/07/10/post-basics/Js%E5%9F%BA%E7%A1%80%E5%BC%95%E5%AF%BC%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%EF%BC%88%E5%89%8D%E8%A8%80%E4%BB%A5%E5%8F%8Ajs%E7%AE%80%E4%BB%8B%EF%BC%89/">Js基础引导（一）——（前言以及js简介）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>你好，朋友，</strong><br>经过对于一段时间的学习以及强行拉赞助（关注），我觉得有必要为初学者普及一下js的学习以及常用的js方法（写法）。</p>
+<p><strong>目前js基础引导，总共6章，对于新新手来说，甚至不需要理解，只需要看过一遍，那么在你步入校园之后的基础学习阶段，依然会有很大的帮助。</strong></p>
+<p><strong>对于新手来说可以夯实基础。</strong><br><strong>对于准新手（准大一），可以提前有一个概念。</strong></p>
+<p>放心，兄弟们，<strong>不要怕我误人子弟</strong>，最近在学习<strong>红宝书（JavaScript高级程序设计）</strong>，所以写的<strong>绝对可靠</strong>，另外，因为这是为初学者准备的，所以博主所描述的内容将更多的偏向于实用性方法，理念性知识会在我<strong>二刷红宝书</strong>的时候进行补充。</p>
+<h2 id="Js简介——理念"><a href="#Js简介——理念" class="headerlink" title="Js简介——理念"></a>Js简介——理念</h2><p>咱们先说说什么是<strong>JS（JavaScript）</strong>，js是前端必须掌握的编程语言之一（另外两个是html和css）。<br><strong>一个完整的JS由三部分组成：</strong></p>
+<ul>
+<li>核心（ECMAScript）   ——提供核心语言功能</li>
+<li>文档对象模型（DOM）——提供访问和操作网页内容的方法和接口</li>
+<li>浏览器对象模型（BOM）——提供与浏览器交互的方法和接口</li>
+</ul>
+<p><strong>解读：</strong></p>
+<ul>
+<li>核心：初学者不会涉及过多这个东西，记住这是核心语法支持就好。</li>
+<li>文档对象模型（DOM）：Dom这里负责支持html引入外来文件，比如说你写的外端css文件。</li>
+<li>浏览器对象模型（BOM）：从根本上来讲，BOM只处理浏览器窗口和框架，但是人们习惯上把所有针对浏览器的JSS扩展都算BOM的一部分。<br> 以下是一些扩展：<ol>
+<li>弹出新浏览器窗口的功能</li>
+<li>移动，缩放和关闭浏览器的功能</li>
+<li>提供详细的navigation对象</li>
+<li>提供当前页面的location对象</li>
+<li>提供用户显示器分辨率详细信息的screen对象</li>
+<li>对cookies的支持</li>
+</ol>
+</li>
+</ul>
+<p>这一章内容就这么多，算是一个过度，下一张开始，我们开始走“干货”。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44220680/article/details/95303083">Js基础引导（一）——（前言以及js简介）</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44220680/article/details/95306622">Js基础引导（二）——语法</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44220680/article/details/95312163">Js基础引导（三）——变量和数据类型</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44220680/article/details/95984735">Js基础引导（四）——操作符</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44220680/article/details/96016550">Js基础引导（五）——语句</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44220680/article/details/96430593">Js基础引导（六）——函数</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xaihan.github.io/2019/07/10/post-basics/Js%E5%9F%BA%E7%A1%80%E5%BC%95%E5%AF%BC%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%EF%BC%88%E5%89%8D%E8%A8%80%E4%BB%A5%E5%8F%8Ajs%E7%AE%80%E4%BB%8B%EF%BC%89/" data-id="cl6ouhcbf000l1kjqc28b699d" data-title="Js基础引导（一）——（前言以及js简介）" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag">基础知识</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-post-project/post-bugFix/vue通过js来设置div的最小高度所出现的赋值失败问题。" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/07/03/post-project/post-bugFix/vue%E9%80%9A%E8%BF%87js%E6%9D%A5%E8%AE%BE%E7%BD%AEdiv%E7%9A%84%E6%9C%80%E5%B0%8F%E9%AB%98%E5%BA%A6%E6%89%80%E5%87%BA%E7%8E%B0%E7%9A%84%E8%B5%8B%E5%80%BC%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98%E3%80%82/" class="article-date">
+  <time class="dt-published" datetime="2019-07-03T14:41:54.000Z" itemprop="datePublished">2019-07-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/07/03/post-project/post-bugFix/vue%E9%80%9A%E8%BF%87js%E6%9D%A5%E8%AE%BE%E7%BD%AEdiv%E7%9A%84%E6%9C%80%E5%B0%8F%E9%AB%98%E5%BA%A6%E6%89%80%E5%87%BA%E7%8E%B0%E7%9A%84%E8%B5%8B%E5%80%BC%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98%E3%80%82/">vue通过js来设置div的最小高度所出现的赋值失败问题。</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>最近敲代码遇到一个小问题，如图：<br>       <strong>当页面内容不够多时，会出现底部栏上移的问题。</strong><br><img src="https://img-blog.csdnimg.cn/20190703222117613.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDIyMDY4MA==,size_16,color_FFFFFF,t_70" alt="当页面内容不够多时，会出现底部栏上移的问题。"><br>一开始我想到的解决方式时，获取到屏幕的高度，并将它赋值为中间的div之中，这就能完美解决footer下移的问题了，说干就干。当时写出的代码是这样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mounted()&#123;</span><br><span class="line">   console.log(&#x27;进行了高度赋值&#x27;);</span><br><span class="line">   console.log($(document).height()/1.7);</span><br><span class="line">   $(&quot;#detail&quot;).css(&quot;min-height&quot;, $(document).height()/1.7+ &quot;px&quot;);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>这是我一开始的打算，在mounted周期之中获取高度并进行高度赋值。<br>但是不知道为什么，一直出现赋值不成功的问题。但是当你进行热加载一次之后就会赋值成功。如下（热加载之后，热加载之前和最开始的图一样。）：<br><img src="https://img-blog.csdnimg.cn/20190703222846746.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDIyMDY4MA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>经过研究发现，在<strong>第一次</strong>进入的时候，<strong>最小高度并没有赋值成功</strong>：<br><img src="https://img-blog.csdnimg.cn/20190703223220541.png" alt="在这里插入图片描述"></p>
+<p><strong>而当重新热加载之后就赋值成功了：</strong><br><img src="https://img-blog.csdnimg.cn/20190703223120379.png" alt="如下图"><br>目前为什么会出现这个原因还没有搞清楚，但博主能感觉出应该是周期加载那一块的问题。</p>
+<p><strong>那么重头戏来了，说完了问题，咱们来说一下解决方法：</strong><br>博主经过多方查询（百度），得到的方法如下：</p>
+<p>给需要设置高度的div添加**:style&#x3D;”contentStyleObj”**（可修改样式）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;detail&quot;  id=&quot;detail&quot; :style=&quot;contentStyleObj&quot;&gt;</span><br><span class="line">      &lt;div class=&quot;top&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;title&quot;&gt;&#123;&#123;detail.article.title&#125;&#125;这是一个很长很长很长的标题，他真的超级长&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;date&quot;&gt;发布日期 : &#123;&#123; detail.article.publishTime | dateformat(&#x27;YYYY-MM-DD&#x27;)&#125;&#125;&lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;div class=&quot;content&quot; id=&quot;content&quot; v-html=&quot;detail.article.content&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>在methods之中添加方法，用来给样式赋值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">methods:&#123;</span><br><span class="line">  getHeight()&#123;</span><br><span class="line">    this.contentStyleObj.height=window.innerHeight/1.5+&#x27;px&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>在created方法之中调用方法，完美解决问题。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">created()&#123;</span><br><span class="line">  this.getHeight()</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>PS：尽管如此，但是对于上面代码所出现的问题，博主还是没（懒）有（得）搞清楚，所以如果有大佬知道原因的话，可以评论指导一下小弟。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xaihan.github.io/2019/07/03/post-project/post-bugFix/vue%E9%80%9A%E8%BF%87js%E6%9D%A5%E8%AE%BE%E7%BD%AEdiv%E7%9A%84%E6%9C%80%E5%B0%8F%E9%AB%98%E5%BA%A6%E6%89%80%E5%87%BA%E7%8E%B0%E7%9A%84%E8%B5%8B%E5%80%BC%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98%E3%80%82/" data-id="cl6oskk1e000guwjq2rvmbo5s" data-title="vue通过js来设置div的最小高度所出现的赋值失败问题。" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E4%BF%AE%E5%A4%8D/" rel="tag">问题修复</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-post-project/post-bugFix/多行省略问题详解：省略号和文字重叠，vue之中多行省略失效。" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/06/20/post-project/post-bugFix/%E5%A4%9A%E8%A1%8C%E7%9C%81%E7%95%A5%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3%EF%BC%9A%E7%9C%81%E7%95%A5%E5%8F%B7%E5%92%8C%E6%96%87%E5%AD%97%E9%87%8D%E5%8F%A0%EF%BC%8Cvue%E4%B9%8B%E4%B8%AD%E5%A4%9A%E8%A1%8C%E7%9C%81%E7%95%A5%E5%A4%B1%E6%95%88%E3%80%82/" class="article-date">
+  <time class="dt-published" datetime="2019-06-20T05:47:47.000Z" itemprop="datePublished">2019-06-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/06/20/post-project/post-bugFix/%E5%A4%9A%E8%A1%8C%E7%9C%81%E7%95%A5%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3%EF%BC%9A%E7%9C%81%E7%95%A5%E5%8F%B7%E5%92%8C%E6%96%87%E5%AD%97%E9%87%8D%E5%8F%A0%EF%BC%8Cvue%E4%B9%8B%E4%B8%AD%E5%A4%9A%E8%A1%8C%E7%9C%81%E7%95%A5%E5%A4%B1%E6%95%88%E3%80%82/">多行省略问题详解：省略号和文字重叠，vue之中多行省略失效。</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>最近敲代码的时候，遇到一个很奇葩的问题，<br>原因：客户需求，想要文字两端对齐，多行省略。如图：<img src="https://img-blog.csdnimg.cn/20190620130837481.png" alt="如图所示"><br><strong>一，vue之中多行省略失效问题：</strong></p>
+<pre><code>**先说一下多行省略和文字居中的基本代码**：
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.aboutUs-text  &gt;&gt;&gt; .p&#123; </span><br><span class="line">  overflow: hidden;  //超出隐藏</span><br><span class="line">  text-overflow: ellipsis; //文字超出部分省略号代替</span><br><span class="line">  display: -webkit-box; //必须要的diaplay盒子模型</span><br><span class="line">  -webkit-line-clamp: 7; //行数省略，7为出现7行，之后省略</span><br><span class="line">  -webkit-box-orient: vertical; //规定排列方式为竖直</span><br><span class="line">  text-align: justify;//文字两端对齐</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>以上是基本代码，正常情况下，直接复制粘贴以上css样式就可以实现需求。
+ps：&gt;&gt;&gt;是vue里面的强制修改样式，因为内容是v-html的方法，所以要用到，正常情况下不需要加。
+</code></pre>
+<p><strong>但是，当我在vue之中使用的时候，问题出现了：虽然是同样的代码，在本地跑也没有问题，但是vue打包上传之后多行省略会失效！！！</strong></p>
+<p>经过长达两个小时的查探，发现问题所在：</p>
+<pre><code>**产生原因：** 这是webpack的锅，他会进行一个操作，从而使得  `display: -webkit-box`失效。
+**解决方法：** 在`display: -webkit-box`进行的时候关掉那个操作就好了。
+</code></pre>
+<p><strong>这是修改之后的代码：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.aboutUs-text &gt;&gt;&gt; p&#123;</span><br><span class="line">  overflow: hidden; </span><br><span class="line">  text-overflow: ellipsis; </span><br><span class="line">  display: -webkit-box; </span><br><span class="line">  -webkit-line-clamp: 7; </span><br><span class="line">   /*! autoprefixer: off */ 关闭操作</span><br><span class="line">  -webkit-box-orient: vertical; </span><br><span class="line">  /* autoprefixer: on */ 打开操作</span><br><span class="line">  text-align: justify;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，这样的话，就不会再出现vue打包之后多行省略失效的问题了。</p>
+<p><strong>二，省略号和文字重叠问题</strong></p>
+<pre><code>当解决了上一个问题之后，又出现了一个新的问题，那就是省略号和文字重叠。如图：
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/2019062013374881.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDIyMDY4MA==,size_16,color_FFFFFF,t_70" alt="如图，出现了问题，文字和省略号重叠了"></p>
+<p><strong>如上图所示，重叠了！！！而且这个文字只在手机端会显示，也就是说，在pc端用浏览器测试的时候是不会出现问题的。</strong></p>
+<p>经过更长时间的查探，发现（猜测）问题所在：</p>
+<pre><code>**产生原因：** 当两端对齐和省略号一起使用时，省略号的地方足够再加上一个（半个）字，所以默认对齐。
+**解决方法：** 将宽度设置为em，目前没有发现再次出现问题，需要更多的真机测试来验证可行性。
+</code></pre>
+<p><strong>代码：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.aboutUs-text &#123;</span><br><span class="line">  width: 18em;</span><br><span class="line">  font-size: 13px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xaihan.github.io/2019/06/20/post-project/post-bugFix/%E5%A4%9A%E8%A1%8C%E7%9C%81%E7%95%A5%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3%EF%BC%9A%E7%9C%81%E7%95%A5%E5%8F%B7%E5%92%8C%E6%96%87%E5%AD%97%E9%87%8D%E5%8F%A0%EF%BC%8Cvue%E4%B9%8B%E4%B8%AD%E5%A4%9A%E8%A1%8C%E7%9C%81%E7%95%A5%E5%A4%B1%E6%95%88%E3%80%82/" data-id="cl6oskk1f000iuwjqc71ofnm8" data-title="多行省略问题详解：省略号和文字重叠，vue之中多行省略失效。" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E4%BF%AE%E5%A4%8D/" rel="tag">问题修复</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/utils-%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7/" rel="tag">utils 实战技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E5%BC%95%E5%AF%BC/" rel="tag">基础引导</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag">基础知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A5%87%E6%80%AA%E7%9A%84%E4%BA%A7%E5%93%81/" rel="tag">奇怪的产品</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7/" rel="tag">实战技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE/" rel="tag">工具配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E4%BF%AE%E5%A4%8D/" rel="tag">问题修复</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/utils-%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">utils 实战技巧</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E5%BC%95%E5%AF%BC/" style="font-size: 10px;">基础引导</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 20px;">基础知识</a> <a href="/tags/%E5%A5%87%E6%80%AA%E7%9A%84%E4%BA%A7%E5%93%81/" style="font-size: 10px;">奇怪的产品</a> <a href="/tags/%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">实战技巧</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">工具配置</a> <a href="/tags/%E9%97%AE%E9%A2%98%E4%BF%AE%E5%A4%8D/" style="font-size: 15px;">问题修复</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">八月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/08/11/post-basics/Js%E5%9F%BA%E7%A1%80%E5%BC%95%E5%AF%BC%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E5%8F%98%E9%87%8F%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">Js基础引导（三）——变量和数据类型</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/11/post-basics/BOM%E5%BC%95%E5%AF%BC%E2%80%94%E2%80%94Location%E5%AF%B9%E8%B1%A1/">BOM引导——Location对象</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/03/post-utils/%E6%89%8B%E6%8A%8A%E6%89%8B%E5%B8%A6%E4%BD%A0%E6%92%B8%E4%B8%80%E4%B8%AA%E7%B2%BE%E5%87%86%E5%80%92%E8%AE%A1%E6%97%B6%EF%BC%88%E5%B7%B2%E5%B0%81%E8%A3%85%EF%BC%8C%E5%8D%B3%E5%BC%80%E5%8D%B3%E7%94%A8~%EF%BC%89/">手把手带你撸一个精准倒计时（已封装，即开即用~）</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/11/post-project/post-strangePro/css%E8%87%AA%E5%AE%9A%E4%B9%89%E6%BB%9A%E5%8A%A8%E6%9D%A1%E6%A0%B7%E5%BC%8F/">css自定义滚动条样式</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/29/post-project/post-bugFix/%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99/">常见报错——Uncaught TypeError: document.getElementsByClassName(...).addEventListener is not a function</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 XConb<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

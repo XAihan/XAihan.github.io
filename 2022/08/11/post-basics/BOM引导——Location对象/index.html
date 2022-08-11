@@ -4,14 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>归档: 2022/8 | 砚知</title>
+  <title>BOM引导——Location对象 | 砚知</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="砚知">
-<meta property="og:url" content="https://xaihan.github.io/archives/2022/08/">
+  <meta name="description" content="location是最有用的BOM对象之一，他提供了与当前窗口中加载的文档有关的信息，还提供了一些导航功能。事实上，location对象是一个很特别的对象，因为他其实window对象，也是document对象。换句话说：window.location和document.location引用的是同一个对象。    属性 说明 例子    hash 设置或返回从井号 (#) 开始的 URL（锚）。 #i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BOM引导——Location对象">
+<meta property="og:url" content="https://xaihan.github.io/2022/08/11/post-basics/BOM%E5%BC%95%E5%AF%BC%E2%80%94%E2%80%94Location%E5%AF%B9%E8%B1%A1/">
 <meta property="og:site_name" content="砚知">
+<meta property="og:description" content="location是最有用的BOM对象之一，他提供了与当前窗口中加载的文档有关的信息，还提供了一些导航功能。事实上，location对象是一个很特别的对象，因为他其实window对象，也是document对象。换句话说：window.location和document.location引用的是同一个对象。    属性 说明 例子    hash 设置或返回从井号 (#) 开始的 URL（锚）。 #i">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-11T09:33:23.000Z">
+<meta property="article:modified_time" content="2022-08-11T09:33:49.931Z">
 <meta property="article:author" content="XConb">
+<meta property="article:tag" content="基础知识">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="砚知" type="application/atom+xml">
@@ -73,77 +78,138 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/08/11/post-basics/Js%E5%9F%BA%E7%A1%80%E5%BC%95%E5%AF%BC%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E5%8F%98%E9%87%8F%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  <time class="dt-published" datetime="2022-08-11T09:37:20.000Z" itemprop="datePublished">8月 11</time>
+        <section id="main"><article id="post-post-basics/BOM引导——Location对象" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/08/11/post-basics/BOM%E5%BC%95%E5%AF%BC%E2%80%94%E2%80%94Location%E5%AF%B9%E8%B1%A1/" class="article-date">
+  <time class="dt-published" datetime="2022-08-11T09:33:23.000Z" itemprop="datePublished">2022-08-11</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/08/11/post-basics/Js%E5%9F%BA%E7%A1%80%E5%BC%95%E5%AF%BC%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E5%8F%98%E9%87%8F%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">Js基础引导（三）——变量和数据类型</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      BOM引导——Location对象
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/08/11/post-basics/BOM%E5%BC%95%E5%AF%BC%E2%80%94%E2%80%94Location%E5%AF%B9%E8%B1%A1/" class="archive-article-date">
-  <time class="dt-published" datetime="2022-08-11T09:33:23.000Z" itemprop="datePublished">8月 11</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/08/11/post-basics/BOM%E5%BC%95%E5%AF%BC%E2%80%94%E2%80%94Location%E5%AF%B9%E8%B1%A1/">BOM引导——Location对象</a>
-    </h1>
-  
+        <p>location是最有用的BOM对象之一，他提供了与当前窗口中加载的文档有关的信息，还提供了一些导航功能。事实上，location对象是一个很特别的对象，因为他其实window对象，也是document对象。<br>换句话说：window.location和document.location引用的是同一个对象。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hash</td>
+<td>设置或返回从井号 (#) 开始的 URL（锚）。</td>
+<td>#id001</td>
+</tr>
+<tr>
+<td>host</td>
+<td>设置或返回主机名和当前 URL 的端口号。</td>
+<td><a target="_blank" rel="noopener" href="http://www.example.com:8080/">www.example.com:8080</a></td>
+</tr>
+<tr>
+<td>hostname</td>
+<td>设置或返回当前 URL 的主机名。</td>
+<td><a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a></td>
+</tr>
+<tr>
+<td>href</td>
+<td>设置或返回完整的 URL。</td>
+<td><a target="_blank" rel="noopener" href="http://www.example.com:8080/html/index.html?name=aa&amp;age=23#id001">http://www.example.com:8080/html/index.html?name=aa&amp;age=23#id001</a></td>
+</tr>
+<tr>
+<td>pathname</td>
+<td>设置或返回当前 URL 的路径部分。</td>
+<td>html&#x2F;index.html</td>
+</tr>
+<tr>
+<td>port</td>
+<td>设置或返回当前 URL 的端口号。</td>
+<td>8080，如果是默认80端口，返回空字符</td>
+</tr>
+<tr>
+<td>protocol</td>
+<td>设置或返回当前 URL 的协议。</td>
+<td>http</td>
+</tr>
+<tr>
+<td>search</td>
+<td>设置或返回从问号 (?) 开始的 URL（查询部分）。</td>
+<td>?name&#x3D;aa&amp;age&#x3D;23</td>
+</tr>
+</tbody></table>
+<p>location对象的方法：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>assign()</td>
+<td>加载新的文档。</td>
+</tr>
+<tr>
+<td>reload()</td>
+<td>重新加载当前文档。</td>
+</tr>
+<tr>
+<td>replace()</td>
+<td>用新的文档替换当前文档。</td>
+</tr>
+</tbody></table>
+<p> <strong>PS: 如果用replace（）的话，相当于销毁当前页面而后打开另一个页面，也就是说，你无法通过后退按钮返回上一个页面。</strong></p>
+<p><strong>PS：对于assign方法，当你调用window.location或者location.href时，系统会默认调用assign方法。如下：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">location</span> = <span class="string">&quot;https://www.csdn.net/&quot;</span>;</span><br><span class="line">location.<span class="property">href</span> = <span class="string">&quot;https://www.csdn.net/&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>这两行代码都会将当前页面跳转到指定网页。</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/08/03/post-utils/%E6%89%8B%E6%8A%8A%E6%89%8B%E5%B8%A6%E4%BD%A0%E6%92%B8%E4%B8%80%E4%B8%AA%E7%B2%BE%E5%87%86%E5%80%92%E8%AE%A1%E6%97%B6%EF%BC%88%E5%B7%B2%E5%B0%81%E8%A3%85%EF%BC%8C%E5%8D%B3%E5%BC%80%E5%8D%B3%E7%94%A8~%EF%BC%89/" class="archive-article-date">
-  <time class="dt-published" datetime="2022-08-03T06:52:08.000Z" itemprop="datePublished">8月 3</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/08/03/post-utils/%E6%89%8B%E6%8A%8A%E6%89%8B%E5%B8%A6%E4%BD%A0%E6%92%B8%E4%B8%80%E4%B8%AA%E7%B2%BE%E5%87%86%E5%80%92%E8%AE%A1%E6%97%B6%EF%BC%88%E5%B7%B2%E5%B0%81%E8%A3%85%EF%BC%8C%E5%8D%B3%E5%BC%80%E5%8D%B3%E7%94%A8~%EF%BC%89/">手把手带你撸一个精准倒计时（已封装，即开即用~）</a>
-    </h1>
-  
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xaihan.github.io/2022/08/11/post-basics/BOM%E5%BC%95%E5%AF%BC%E2%80%94%E2%80%94Location%E5%AF%B9%E8%B1%A1/" data-id="cl6oubr68000h1kjq20v1hf70" data-title="BOM引导——Location对象" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag">基础知识</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/08/11/post-basics/Js%E5%9F%BA%E7%A1%80%E5%BC%95%E5%AF%BC%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E5%8F%98%E9%87%8F%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          Js基础引导（三）——变量和数据类型
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/08/03/post-utils/%E6%89%8B%E6%8A%8A%E6%89%8B%E5%B8%A6%E4%BD%A0%E6%92%B8%E4%B8%80%E4%B8%AA%E7%B2%BE%E5%87%86%E5%80%92%E8%AE%A1%E6%97%B6%EF%BC%88%E5%B7%B2%E5%B0%81%E8%A3%85%EF%BC%8C%E5%8D%B3%E5%BC%80%E5%8D%B3%E7%94%A8~%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">手把手带你撸一个精准倒计时（已封装，即开即用~）</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>

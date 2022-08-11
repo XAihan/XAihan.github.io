@@ -4,14 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>归档: 2022/8 | 砚知</title>
+  <title>移动端字体垂直居中偏上问题详解 | 砚知</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="砚知">
-<meta property="og:url" content="https://xaihan.github.io/archives/2022/08/">
+  <meta name="description" content="相信对于广大前端程序员来说，一定曾经被这个问题giao住过。那就是——移动端字体垂直居中偏上。今天就来谈一下这个问题以及解决方法。 产生原因 移动端开发，为了更好的适配，大家都会采用em或者rem来进行开发。 在进行适配的换算时，编译器会将em或者rem自动换算成px来显示。 这时就会出现问题，因为换算精度不足，换算成的px会出现小数点问题， 如果出现小数点的话，系统会自动进行四舍五入的取整运算。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端字体垂直居中偏上问题详解">
+<meta property="og:url" content="https://xaihan.github.io/2019/10/13/post-project/post-bugFix/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%AD%97%E4%BD%93%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E5%81%8F%E4%B8%8A%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3/">
 <meta property="og:site_name" content="砚知">
+<meta property="og:description" content="相信对于广大前端程序员来说，一定曾经被这个问题giao住过。那就是——移动端字体垂直居中偏上。今天就来谈一下这个问题以及解决方法。 产生原因 移动端开发，为了更好的适配，大家都会采用em或者rem来进行开发。 在进行适配的换算时，编译器会将em或者rem自动换算成px来显示。 这时就会出现问题，因为换算精度不足，换算成的px会出现小数点问题， 如果出现小数点的话，系统会自动进行四舍五入的取整运算。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-10-13T05:45:01.000Z">
+<meta property="article:modified_time" content="2022-08-11T09:20:46.334Z">
 <meta property="article:author" content="XConb">
+<meta property="article:tag" content="问题修复">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="砚知" type="application/atom+xml">
@@ -73,77 +78,77 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/08/11/post-basics/Js%E5%9F%BA%E7%A1%80%E5%BC%95%E5%AF%BC%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E5%8F%98%E9%87%8F%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  <time class="dt-published" datetime="2022-08-11T09:37:20.000Z" itemprop="datePublished">8月 11</time>
+        <section id="main"><article id="post-post-project/post-bugFix/移动端字体垂直居中偏上问题详解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/13/post-project/post-bugFix/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%AD%97%E4%BD%93%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E5%81%8F%E4%B8%8A%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3/" class="article-date">
+  <time class="dt-published" datetime="2019-10-13T05:45:01.000Z" itemprop="datePublished">2019-10-13</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/08/11/post-basics/Js%E5%9F%BA%E7%A1%80%E5%BC%95%E5%AF%BC%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E5%8F%98%E9%87%8F%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">Js基础引导（三）——变量和数据类型</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      移动端字体垂直居中偏上问题详解
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/08/11/post-basics/BOM%E5%BC%95%E5%AF%BC%E2%80%94%E2%80%94Location%E5%AF%B9%E8%B1%A1/" class="archive-article-date">
-  <time class="dt-published" datetime="2022-08-11T09:33:23.000Z" itemprop="datePublished">8月 11</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/08/11/post-basics/BOM%E5%BC%95%E5%AF%BC%E2%80%94%E2%80%94Location%E5%AF%B9%E8%B1%A1/">BOM引导——Location对象</a>
-    </h1>
-  
+        <p>相信对于广大前端程序员来说，一定曾经被这个问题giao住过。<br>那就是——<strong>移动端字体垂直居中偏上</strong>。<br>今天就来谈一下这个问题以及解决方法。</p>
+<h3 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h3><ol>
+<li>移动端开发，为了更好的适配，大家都会采用em或者rem来进行开发。</li>
+<li>在进行适配的换算时，编译器会将em或者rem自动换算成px来显示。</li>
+<li>这时就会出现问题，因为换算精度不足，换算成的px会出现小数点问题，</li>
+<li>如果出现小数点的话，系统会自动进行四舍五入的取整运算。</li>
+<li>取整之后就会出现居中的字体偏上问题了。</li>
+<li>既然找到了原因，那么解决起来就有思路了，</li>
+</ol>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><h4 id="1-flex缩放"><a href="#1-flex缩放" class="headerlink" title="1.flex缩放"></a>1.flex缩放</h4><p>直接使用f’lex进行一次内容的缩小和放大，从而使得转换的px相同。</p>
+<h4 id="2-table-cell取整"><a href="#2-table-cell取整" class="headerlink" title="2.table-cell取整"></a>2.table-cell取整</h4><p>既然是因为转换出现小数点，那么display使用table-cell，进行取整。</p>
+<h4 id="3-transform：scale-5"><a href="#3-transform：scale-5" class="headerlink" title="3.transform：scale(.5)"></a>3.transform：scale(.5)</h4><p>同样也是缩放。</p>
+<h4 id="4-margin-top和定位联合使用"><a href="#4-margin-top和定位联合使用" class="headerlink" title="4.margin-top和定位联合使用"></a>4.margin-top和定位联合使用</h4><p>这是下下策，前三种方法都不行的话，可以这样强行定位。</p>
+<h3 id="5-px"><a href="#5-px" class="headerlink" title="5.px"></a>5.px</h3><p>问题在于rem转换，那么直接不用rem，换成px就可以避免这个问题，但是移动端px开发的弊端肯定就出现了，</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/08/03/post-utils/%E6%89%8B%E6%8A%8A%E6%89%8B%E5%B8%A6%E4%BD%A0%E6%92%B8%E4%B8%80%E4%B8%AA%E7%B2%BE%E5%87%86%E5%80%92%E8%AE%A1%E6%97%B6%EF%BC%88%E5%B7%B2%E5%B0%81%E8%A3%85%EF%BC%8C%E5%8D%B3%E5%BC%80%E5%8D%B3%E7%94%A8~%EF%BC%89/" class="archive-article-date">
-  <time class="dt-published" datetime="2022-08-03T06:52:08.000Z" itemprop="datePublished">8月 3</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/08/03/post-utils/%E6%89%8B%E6%8A%8A%E6%89%8B%E5%B8%A6%E4%BD%A0%E6%92%B8%E4%B8%80%E4%B8%AA%E7%B2%BE%E5%87%86%E5%80%92%E8%AE%A1%E6%97%B6%EF%BC%88%E5%B7%B2%E5%B0%81%E8%A3%85%EF%BC%8C%E5%8D%B3%E5%BC%80%E5%8D%B3%E7%94%A8~%EF%BC%89/">手把手带你撸一个精准倒计时（已封装，即开即用~）</a>
-    </h1>
-  
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xaihan.github.io/2019/10/13/post-project/post-bugFix/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%AD%97%E4%BD%93%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E5%81%8F%E4%B8%8A%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3/" data-id="cl6osn3si000zuwjqcr2m9ss7" data-title="移动端字体垂直居中偏上问题详解" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E4%BF%AE%E5%A4%8D/" rel="tag">问题修复</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/10/16/post-basics/js%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          js之字符串方法总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/12/post-basics/js%E4%B9%8BGenerator%E5%87%BD%E6%95%B0%EF%BC%88ES6%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">js之Generator函数（ES6）</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>
