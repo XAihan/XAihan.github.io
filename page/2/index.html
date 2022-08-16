@@ -75,6 +75,70 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-post-basics/js之Generator函数（ES6）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/12/post-basics/js%E4%B9%8BGenerator%E5%87%BD%E6%95%B0%EF%BC%88ES6%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2019-10-12T08:35:20.000Z" itemprop="datePublished">2019-10-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/10/12/post-basics/js%E4%B9%8BGenerator%E5%87%BD%E6%95%B0%EF%BC%88ES6%EF%BC%89/">js之Generator函数（ES6）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Generator函数是ES6提供的一个异步编程解决方案。语法行为与传统函数完全不同。</p>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li>从语法上来说<br> 首先可以把他理解为一个状态机，封装了多个内部状态。<br> 执行Generator函数会返回一个遍历器对象，返回的遍历器对象可以依次遍历Generator函数内部的每一个状态。</li>
+<li>形式上来讲，Generator是一个普通函数，但是有两个特征。<br> 1 function命令和函数名之间有一个星号；<br> 2 函数体内部使用yield语句定义不同的内部状态。</li>
+<li>示例： <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">helloWorldGenerator</span>(<span class="params"></span>)&#123;</span><br><span class="line">       <span class="keyword">yield</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">       <span class="keyword">yield</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;world&#x27;</span>);</span><br><span class="line">       <span class="keyword">return</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;ending&#x27;</span>);</span><br><span class="line">     &#125;</span><br><span class="line"><span class="keyword">var</span> hw = <span class="variable language_">this</span>.<span class="title function_">helloWorldGenerator</span>();</span><br><span class="line">hw.<span class="title function_">next</span>();		<span class="comment">//hello</span></span><br><span class="line">hw.<span class="title function_">next</span>();		<span class="comment">//world</span></span><br><span class="line">hw.<span class="title function_">next</span>();		<span class="comment">//ending</span></span><br></pre></td></tr></table></figure>
+ 如上代码，当运行时并不会一次运行完所有，而是通过next()方法进行分段的运行。</li>
+</ul>
+<h3 id="yield表达式"><a href="#yield表达式" class="headerlink" title="yield表达式"></a>yield表达式</h3><p>由于Generator函数是分段运行的，所以需要一个分段的标志，也就是说，代码运行到哪里停的标志。这就是yield的作用。<br><strong>遍历器对象的next方法的运行逻辑如下：</strong></p>
+<ol>
+<li>遇到yield语句暂停执行后面的操作，并将紧跟yield后的表达式的值作为返回对象的value属性。</li>
+<li>下一次调用next方法，继续执行直到遇到下一个yield。</li>
+<li>如果没有遇到新的yield，就一直运行到函数结束，直到return语句为止。</li>
+<li>如果没有return，则返回对象的value属性值为undefined。</li>
+</ol>
+<p> <strong>yield和return的区别</strong><br>     yield拥有记忆位置的功能，可以根据next进行位置代码的继续执行。</p>
+<h3 id="next方法"><a href="#next方法" class="headerlink" title="next方法"></a>next方法</h3><p>next是Generator函数继续运行代码的方法。<br>该方法可以带有一个参数，该参数会被当作上一条yield语句的返回值。<br><strong>这个功能有着很重要的语法意义。Generator函数从暂停状态到恢复状态，其上下文状态（context）是不变的，通过next方法的参数就可以在运行过程中继续向函数体内部注入值，从而调整函数行为。</strong></p>
+<p>示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">helloWorldGenerator</span>(<span class="params">x</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> y = <span class="number">2</span> * (<span class="keyword">yield</span> (x+<span class="number">1</span>));</span><br><span class="line">      <span class="keyword">var</span> z = <span class="title function_">yield</span>(y / <span class="number">3</span>);</span><br><span class="line">      <span class="keyword">return</span> (x + y + z);</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="title function_">helloWorldGenerator</span>(<span class="number">5</span>);</span><br><span class="line">     <span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="title function_">next</span>());		<span class="comment">//6</span></span><br><span class="line">     <span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="title function_">next</span>(<span class="number">12</span>));		<span class="comment">//8</span></span><br><span class="line">     <span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="title function_">next</span>(<span class="number">13</span>));		<span class="comment">//42</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="for…of循环"><a href="#for…of循环" class="headerlink" title="for…of循环"></a>for…of循环</h3><p>for…of循环可以自动便利Generator函数生成的iterator对象，且此时不再需要调用next方法。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">helloWorldGenerator</span>(<span class="params"></span>) &#123;</span><br><span class="line">       <span class="keyword">let</span> i=<span class="number">10</span>;</span><br><span class="line">       <span class="keyword">yield</span> i++;</span><br><span class="line">       <span class="keyword">yield</span> i++;</span><br><span class="line">       <span class="keyword">yield</span> i++;</span><br><span class="line">       <span class="keyword">yield</span> i++;</span><br><span class="line">       <span class="keyword">yield</span> i++;</span><br><span class="line">       <span class="keyword">yield</span> i++;</span><br><span class="line">       <span class="keyword">yield</span> i++;</span><br><span class="line">       <span class="keyword">yield</span> i++;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">var</span> a = <span class="title function_">helloWorldGenerator</span>();</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">let</span> v <span class="keyword">of</span> a)&#123;</span><br><span class="line">       <span class="variable language_">console</span>.<span class="title function_">log</span>(v);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="comment">// 10，11，12，13，14，15，16，17</span></span><br></pre></td></tr></table></figure>
+
+<p>未完待续。。。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xaihan.github.io/2019/10/12/post-basics/js%E4%B9%8BGenerator%E5%87%BD%E6%95%B0%EF%BC%88ES6%EF%BC%89/" data-id="cl6w6akab000mesjqbnnqhd1c" data-title="js之Generator函数（ES6）" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag">基础知识</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-post-basics/JS之promise对象（ES6）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2019/10/12/post-basics/JS%E4%B9%8Bpromise%E5%AF%B9%E8%B1%A1%EF%BC%88ES6%EF%BC%89/" class="article-date">
@@ -153,7 +217,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xaihan.github.io/2019/10/12/post-basics/JS%E4%B9%8Bpromise%E5%AF%B9%E8%B1%A1%EF%BC%88ES6%EF%BC%89/" data-id="cl6px922a0006q4jqf13ic3rm" data-title="JS之proise对象（ES6）" class="article-share-link">分享</a>
+      <a data-url="https://xaihan.github.io/2019/10/12/post-basics/JS%E4%B9%8Bpromise%E5%AF%B9%E8%B1%A1%EF%BC%88ES6%EF%BC%89/" data-id="cl6w6aka10006esjqftb67g82" data-title="JS之proise对象（ES6）" class="article-share-link">分享</a>
       
       
       
@@ -252,7 +316,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xaihan.github.io/2019/09/26/post-basics/%E5%89%8D%E7%AB%AF%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%EF%BC%88%E6%9C%89%E5%AE%9E%E4%BE%8B%EF%BC%89/" data-id="cl6px922i000qq4jq9mthamjy" data-title="前端实现动画效果的几种方式（有实例）" class="article-share-link">分享</a>
+      <a data-url="https://xaihan.github.io/2019/09/26/post-basics/%E5%89%8D%E7%AB%AF%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%EF%BC%88%E6%9C%89%E5%AE%9E%E4%BE%8B%EF%BC%89/" data-id="cl6w6akad000qesjq0z5509rv" data-title="前端实现动画效果的几种方式（有实例）" class="article-share-link">分享</a>
       
       
       
@@ -349,7 +413,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xaihan.github.io/2019/09/26/post-basics/JS%E4%B9%8BArray%E6%95%B0%E7%BB%84%E8%A1%A5%E5%85%85%EF%BC%88ES6%EF%BC%89/" data-id="cl6px922a0005q4jq5wee63mw" data-title="JS之Array数组补充（ES6）" class="article-share-link">分享</a>
+      <a data-url="https://xaihan.github.io/2019/09/26/post-basics/JS%E4%B9%8BArray%E6%95%B0%E7%BB%84%E8%A1%A5%E5%85%85%EF%BC%88ES6%EF%BC%89/" data-id="cl6w6aka00005esjqcb2x7mq4" data-title="JS之Array数组补充（ES6）" class="article-share-link">分享</a>
       
       
       
@@ -390,7 +454,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xaihan.github.io/2019/09/02/post-project/post-Settings/idea%E6%89%93%E5%8D%B0%E5%87%BA%E6%9D%A5%E7%9A%84%E4%BF%A1%E6%81%AF%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/" data-id="cl6px922m0016q4jqevqg7kpw" data-title="iea打印出来的信息中文乱码问题" class="article-share-link">分享</a>
+      <a data-url="https://xaihan.github.io/2019/09/02/post-project/post-Settings/idea%E6%89%93%E5%8D%B0%E5%87%BA%E6%9D%A5%E7%9A%84%E4%BF%A1%E6%81%AF%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/" data-id="cl6w6akah0011esjq9ysk5e6g" data-title="iea打印出来的信息中文乱码问题" class="article-share-link">分享</a>
       
       
       
@@ -434,7 +498,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xaihan.github.io/2019/08/20/post-project/post-Settings/vsCode%E5%AE%89%E8%A3%85vetur%E4%B9%8B%E5%90%8E%E4%B8%8D%E7%94%9F%E6%95%88%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" data-id="cl6px922o0018q4jqhir70ap9" data-title="vsCoe安装vetur之后不生效以及解决方法" class="article-share-link">分享</a>
+      <a data-url="https://xaihan.github.io/2019/08/20/post-project/post-Settings/vsCode%E5%AE%89%E8%A3%85vetur%E4%B9%8B%E5%90%8E%E4%B8%8D%E7%94%9F%E6%95%88%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" data-id="cl6w6akah0013esjq5zjje77f" data-title="vsCoe安装vetur之后不生效以及解决方法" class="article-share-link">分享</a>
       
       
       
@@ -499,7 +563,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xaihan.github.io/2019/07/28/post-basics/%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%A3%80%E6%B5%8B%E2%80%94%E2%80%94%E8%83%BD%E5%8A%9B%E6%A3%80%E6%B5%8B/" data-id="cl6px922j000uq4jqavq92u4y" data-title="客户端检测——能力检测" class="article-share-link">分享</a>
+      <a data-url="https://xaihan.github.io/2019/07/28/post-basics/%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%A3%80%E6%B5%8B%E2%80%94%E2%80%94%E8%83%BD%E5%8A%9B%E6%A3%80%E6%B5%8B/" data-id="cl6w6akad000sesjq1gcfdrpw" data-title="客户端检测——能力检测" class="article-share-link">分享</a>
       
       
       
@@ -555,7 +619,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xaihan.github.io/2019/07/28/post-basics/BOM%E5%BC%95%E5%AF%BC%E2%80%94%E2%80%94history%E5%AF%B9%E8%B1%A1/" data-id="cl6px92200001q4jqffyy6twu" data-title="BOM引导——history对象" class="article-share-link">分享</a>
+      <a data-url="https://xaihan.github.io/2019/07/28/post-basics/BOM%E5%BC%95%E5%AF%BC%E2%80%94%E2%80%94history%E5%AF%B9%E8%B1%A1/" data-id="cl6w6ak9x0002esjqah70ggj1" data-title="BOM引导——history对象" class="article-share-link">分享</a>
       
       
       
@@ -616,7 +680,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xaihan.github.io/2019/07/27/post-basics/BOM%E5%BC%95%E5%AF%BC%E2%80%94%E2%80%94js%E9%97%B4%E6%AD%87%E8%B0%83%E7%94%A8%E5%92%8C%E8%B6%85%E6%97%B6%E8%B0%83%E7%94%A8/" data-id="cl6px92290004q4jqaz6wh4e8" data-title="BOM引导——js间歇调用和超时调用" class="article-share-link">分享</a>
+      <a data-url="https://xaihan.github.io/2019/07/27/post-basics/BOM%E5%BC%95%E5%AF%BC%E2%80%94%E2%80%94js%E9%97%B4%E6%AD%87%E8%B0%83%E7%94%A8%E5%92%8C%E8%B6%85%E6%97%B6%E8%B0%83%E7%94%A8/" data-id="cl6w6ak9z0004esjqcev08so1" data-title="BOM引导——js间歇调用和超时调用" class="article-share-link">分享</a>
       
       
       
@@ -683,84 +747,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xaihan.github.io/2019/07/18/post-basics/Js%E5%9F%BA%E7%A1%80%E5%BC%95%E5%AF%BC%EF%BC%88%E5%85%AD%EF%BC%89%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0/" data-id="cl6px922g000kq4jq3laf61bo" data-title="Js基础引导（六）——函数" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag">基础知识</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-post-basics/Js基础引导（五）——语句" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2019/07/18/post-basics/Js%E5%9F%BA%E7%A1%80%E5%BC%95%E5%AF%BC%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94%E8%AF%AD%E5%8F%A5/" class="article-date">
-  <time class="dt-published" datetime="2019-07-18T05:43:19.000Z" itemprop="datePublished">2019-07-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2019/07/18/post-basics/Js%E5%9F%BA%E7%A1%80%E5%BC%95%E5%AF%BC%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94%E8%AF%AD%E5%8F%A5/">Js基础引导（五）——语句</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>你好，朋友。<br><strong>欢迎进入JS基础引导——语句</strong><br>语句也是js语言的基础，负责程序运行的流程。</p>
-<h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><h3 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a>if语句</h3><p>大多数编程语言中最为常用的一个语句就是if语句。<br>基本使用方法：<br>    if（condition）statement1 else statement2<br>    如果产生这种情况，则 进行 statement1 语句，否则，进行statement2语句。<br>    如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>（a &gt; b ）&#123;					<span class="comment">//进行判断，a是否大于b</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;a比b大&#x27;</span>)		<span class="comment">// a大于b，输出“a比b大”</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	<span class="variable language_">console</span>。log（‘a没有b大’）	<span class="comment">// 否则，输出“a没有b大”</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="switch语句"><a href="#switch语句" class="headerlink" title="switch语句"></a>switch语句</h2><p>switch语句和if语句的关系最为亲切，而且也是其他语言中普遍使用的一种流控制语句。<br>简单来讲：<strong>当你出现了需要选择不同按钮来返回不同结果的情况时，会用到这个语句。</strong><br>如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>（i）&#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">1</span>: <span class="title function_">alert</span>(<span class="string">&#x27;1&#x27;</span>);<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">2</span>: <span class="title function_">alert</span>(<span class="string">&#x27;2&#x27;</span>);<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">3</span>: <span class="title function_">alert</span>(<span class="string">&#x27;3&#x27;</span>);<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">4</span>: <span class="title function_">alert</span>(<span class="string">&#x27;4&#x27;</span>);<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">5</span>: <span class="title function_">alert</span>(<span class="string">&#x27;5&#x27;</span>);<span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如上图所示，根据你 i 的值不同，弹出的结果也不同，这相当于一个加强版的 if 语句。</p>
-<h2 id="do-while语句"><a href="#do-while语句" class="headerlink" title="do-while语句"></a>do-while语句</h2><p>do-while语句是一种后测试循环语句，即在代码执行一次之后，才会进行条件筛选。<br>如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i = <span class="number">0</span>;			<span class="comment">//定义i为0</span></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">	i += <span class="number">2</span>;			<span class="comment">// 循环里的内容，i+2操作。</span></span><br><span class="line">&#125;<span class="keyword">while</span>(i &lt; <span class="number">10</span>)		<span class="comment">//	小于10，进行循环。 </span></span><br></pre></td></tr></table></figure>
-<p>会先进行一次操作，然后再进行条件判断。如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i = <span class="number">10</span>;			<span class="comment">//定义i为10</span></span><br><span class="line"><span class="keyword">do</span> &#123;				<span class="comment">//	运行一次循环体内的代码</span></span><br><span class="line">	i += <span class="number">2</span>;			<span class="comment">// 循环里的内容，i+2操作。</span></span><br><span class="line">&#125;<span class="keyword">while</span>(i &lt; <span class="number">10</span>)		<span class="comment">//	循环判断，小于10，进行循环。 </span></span><br></pre></td></tr></table></figure>
-<p>如上图所示，尽管已经不符合 i &lt; 10 这个条件了，依然会进行一次操作，从而输出结果 12.</p>
-<h2 id="while语句"><a href="#while语句" class="headerlink" title="while语句"></a>while语句</h2><p>while是一种前测试循环语句，也就是说，会先进行条件判断，再进行循环操作。因此，循环体内的代码可能永远不会被执行。如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i = <span class="number">0</span>;			<span class="comment">//定义i为0；</span></span><br><span class="line"><span class="keyword">while</span> (i &lt; <span class="number">10</span>)&#123;		<span class="comment">//进行循环判断，小于10，进行循环</span></span><br><span class="line">	i += <span class="number">2</span> ;		<span class="comment">//循环内容，i+2操作。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="for语句"><a href="#for语句" class="headerlink" title="for语句"></a>for语句</h2><p>for语句，前测试循环语句，但是他具有在执行循环语句之前初始化变量和定义循环后要执行代码的能力。如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>（<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++）</span><br><span class="line">&#123;	<span class="comment">//  ⬆ （上方） 表头，定义了变量a，设置了循环条件为i&lt;10，设置了循环结束之后i的变化。</span></span><br><span class="line">	<span class="title function_">alert</span>(i);		<span class="comment">//	循环内容，可以是任何你想要的代码。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="break和continue语句"><a href="#break和continue语句" class="headerlink" title="break和continue语句"></a>break和continue语句</h2><p>这两个语句用于在循环语句之中精确的控制代码的运行。<br>break：作用于循环内部，实现效果——终止本次循环。<br>continue：作用于循环北部，实现效果——跳过本次循环。<br>代码实例如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>（<span class="keyword">var</span> i= <span class="number">0</span>; i&lt;<span class="number">10</span>; i++）&#123;		<span class="comment">//定义循环条件</span></span><br><span class="line">	<span class="keyword">if</span>(i == <span class="number">5</span>) <span class="keyword">continue</span>;		<span class="comment">//如果 i等于5，跳过本次循环</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(i);				<span class="comment">//输出i</span></span><br><span class="line">	<span class="keyword">if</span>( i == <span class="number">8</span>) <span class="keyword">break</span>;			<span class="comment">//如果i等于7，终止循环。</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//上图输出结果为：1，2，3，4，6，7，8</span></span><br><span class="line"><span class="comment">//解析： 在5的时候跳过了，所以输出里没有5。</span></span><br><span class="line"><span class="comment">//在8的时候终止，但终止的语句在输出语句的后面，所以还是会输出8.</span></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="for-in语句（初学者选学）"><a href="#for-in语句（初学者选学）" class="headerlink" title="for-in语句（初学者选学）"></a>for-in语句（初学者选学）</h2><p>for-in语句是一种精准的迭代语句。（对于初学者更多的使用for语句）<br>以下是实例：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> propName <span class="keyword">in</span> <span class="variable language_">window</span>)&#123;		</span><br><span class="line">	<span class="variable language_">document</span>.<span class="title function_">write</span>(propName)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在上图这个例子中，我便利了BOM中的window对象的所有属性。<br>需要注意的是，这样的迭代时没有顺序的，因为ECMAScript对象的属性没有顺序。</p>
-<h2 id="label语句-初学者选学"><a href="#label语句-初学者选学" class="headerlink" title="label语句(初学者选学)"></a>label语句(初学者选学)</h2><p>使用label语句可以在代码里添加标签，以便将来使用：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">start</span>: <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">	<span class="title function_">alert</span>(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="with语句（初学者选学）"><a href="#with语句（初学者选学）" class="headerlink" title="with语句（初学者选学）"></a>with语句（初学者选学）</h2><p>with语句的作用是将代码的作用域设置在一个特定的对象里，<strong>定义with语句的目的在于简化多次编写同一个对象的工作。</strong></p>
-<p>如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> qs =location.<span class="property">search</span>.<span class="title function_">substring</span>(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">var</span> hostName = location.<span class="property">hostname</span>;</span><br><span class="line"><span class="keyword">var</span> url = location.<span class="property">href</span>;</span><br></pre></td></tr></table></figure>
-
-<p>上面几行代码都包括location对象，如果使用with语句的话，如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span>（location）&#123;</span><br><span class="line">	<span class="keyword">var</span> qs =search.<span class="title function_">substring</span>(<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">var</span> hostName = hostname;</span><br><span class="line">	<span class="keyword">var</span> url = href;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>请注意，严格模式下不允许使用with语句。</strong></p>
-<p>以上就是本章的全部内容了。</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44220680/article/details/95303083">Js基础引导（一）——（前言以及js简介）</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44220680/article/details/95306622">Js基础引导（二）——语法</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44220680/article/details/95312163">Js基础引导（三）——变量和数据类型</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44220680/article/details/95984735">Js基础引导（四）——操作符</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44220680/article/details/96016550">Js基础引导（五）——语句</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44220680/article/details/96430593">Js基础引导（六）——函数</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xaihan.github.io/2019/07/18/post-basics/Js%E5%9F%BA%E7%A1%80%E5%BC%95%E5%AF%BC%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94%E8%AF%AD%E5%8F%A5/" data-id="cl6px922f000gq4jqd4799cys" data-title="Js基础引导（五）——语句" class="article-share-link">分享</a>
+      <a data-url="https://xaihan.github.io/2019/07/18/post-basics/Js%E5%9F%BA%E7%A1%80%E5%BC%95%E5%AF%BC%EF%BC%88%E5%85%AD%EF%BC%89%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0/" data-id="cl6w6akaa000kesjqbue2gkyd" data-title="Js基础引导（六）——函数" class="article-share-link">分享</a>
       
       
       
@@ -792,7 +779,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/utils-%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7/" rel="tag">utils 实战技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag">基础知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A5%87%E6%80%AA%E7%9A%84%E4%BA%A7%E5%93%81-%E6%BB%9A%E5%8A%A8%E6%9D%A1/" rel="tag">奇怪的产品 滚动条</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7-rem%E8%BD%AC%E6%8D%A2/" rel="tag">实战技巧 rem转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE/" rel="tag">工具配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE-vscode/" rel="tag">工具配置 vscode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E4%BF%AE%E5%A4%8D/" rel="tag">问题修复</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/utils-%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7/" rel="tag">utils 实战技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag">基础知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A5%87%E6%80%AA%E7%9A%84%E4%BA%A7%E5%93%81-%E6%BB%9A%E5%8A%A8%E6%9D%A1/" rel="tag">奇怪的产品 滚动条</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7-rem%E8%BD%AC%E6%8D%A2/" rel="tag">实战技巧 rem转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7-utils/" rel="tag">实战技巧 utils</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE/" rel="tag">工具配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE-vscode/" rel="tag">工具配置 vscode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E4%BF%AE%E5%A4%8D/" rel="tag">问题修复</a></li></ul>
     </div>
   </div>
 
@@ -802,7 +789,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/utils-%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">utils 实战技巧</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 20px;">基础知识</a> <a href="/tags/%E5%A5%87%E6%80%AA%E7%9A%84%E4%BA%A7%E5%93%81-%E6%BB%9A%E5%8A%A8%E6%9D%A1/" style="font-size: 10px;">奇怪的产品 滚动条</a> <a href="/tags/%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7-rem%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">实战技巧 rem转换</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">工具配置</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE-vscode/" style="font-size: 10px;">工具配置 vscode</a> <a href="/tags/%E9%97%AE%E9%A2%98%E4%BF%AE%E5%A4%8D/" style="font-size: 15px;">问题修复</a>
+      <a href="/tags/utils-%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">utils 实战技巧</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 20px;">基础知识</a> <a href="/tags/%E5%A5%87%E6%80%AA%E7%9A%84%E4%BA%A7%E5%93%81-%E6%BB%9A%E5%8A%A8%E6%9D%A1/" style="font-size: 10px;">奇怪的产品 滚动条</a> <a href="/tags/%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7-rem%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">实战技巧 rem转换</a> <a href="/tags/%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7-utils/" style="font-size: 10px;">实战技巧 utils</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">工具配置</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE-vscode/" style="font-size: 10px;">工具配置 vscode</a> <a href="/tags/%E9%97%AE%E9%A2%98%E4%BF%AE%E5%A4%8D/" style="font-size: 15px;">问题修复</a>
     </div>
   </div>
 
@@ -824,6 +811,10 @@
       <ul>
         
           <li>
+            <a href="/2022/08/16/post-utils/%E8%8E%B7%E5%8F%96%E5%8C%97%E4%BA%AC%E6%9C%AC%E5%9C%B0%E6%97%B6%E9%97%B4%EF%BC%88%E5%B7%B2%E5%B0%81%E8%A3%85%EF%BC%8C%E5%8D%B3%E5%BC%80%E5%8D%B3%E7%94%A8%EF%BC%89/">获取北京本地时间（已封装，即开即用）</a>
+          </li>
+        
+          <li>
             <a href="/2022/08/11/hello-world/">关于砚知和他的自我介绍</a>
           </li>
         
@@ -837,10 +828,6 @@
         
           <li>
             <a href="/2022/08/03/post-utils/%E6%89%8B%E6%8A%8A%E6%89%8B%E5%B8%A6%E4%BD%A0%E6%92%B8%E4%B8%80%E4%B8%AA%E7%B2%BE%E5%87%86%E5%80%92%E8%AE%A1%E6%97%B6%EF%BC%88%E5%B7%B2%E5%B0%81%E8%A3%85%EF%BC%8C%E5%8D%B3%E5%BC%80%E5%8D%B3%E7%94%A8~%EF%BC%89/">手把手带你撸一个精准倒计时（已封装，即开即用~）</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/11/post-project/post-strangePro/css%E8%87%AA%E5%AE%9A%E4%B9%89%E6%BB%9A%E5%8A%A8%E6%9D%A1%E6%A0%B7%E5%BC%8F/">css自定义滚动条样式</a>
           </li>
         
       </ul>
